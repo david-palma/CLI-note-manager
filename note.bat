@@ -1,8 +1,15 @@
 :: Simple CLI-based note manager
 @echo off
 
-:: Set the preferred editor (default to Micro)
-set "EDITOR=micro"
+:: Set the preferred editor (default to Notepad)
+set "EDITOR=notepad"
+
+:: Check if micro is available, and use it as the editor if found
+if exist "%ProgramFiles%\Micro\micro.exe" (
+    set "EDITOR=%ProgramFiles%\Micro\micro.exe"
+) else if exist "%ProgramFiles(x86)%\Micro\micro.exe" (
+    set "EDITOR=%ProgramFiles(x86)%\Micro\micro.exe"
+)
 
 :: Set directory for notes
 if exist "D:\" (
